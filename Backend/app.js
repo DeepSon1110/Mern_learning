@@ -10,8 +10,8 @@ const app = express();
 import connectDB from "./database/database.js";
 import Blog from "./models/Blog.js";
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 connectDB();
 
 //get method
@@ -42,7 +42,7 @@ app.post("/blog", async (req, res) => {
 
   //res.send(req.body)
   //const title = article.title is equivelnt to,
-  const {title,subTitle,description} = req.body;
+  const { title, subTitle, description } = req.body;
 
   const info = await Blog.create({
     //if key and value are different
@@ -53,7 +53,7 @@ app.post("/blog", async (req, res) => {
     //if key and value are same then, here in line 41 (title : article.title) so we , just can write title
     title,
     subTitle,
-    description
+    description,
   });
 
   res.json({
@@ -62,64 +62,58 @@ app.post("/blog", async (req, res) => {
   });
 });
 
-
-
 //get method (all)
-app.get('/about', async (req, res) => {
-
+app.get("/about", async (req, res) => {
   const data = await Blog.find();
 
   res.status(200).json({
     message: "Data Fetched Successfully",
-    data: data
+    data: data,
   });
 });
 
 //get method (single)
-app.get('/about/:id',async(req,res)=>{
-
+app.get("/about/:id", async (req, res) => {
   //url ma pahako kura params ma aauxa ( so params lekhako, if not req.body lekhnu parthyoo)
-  
 
-  const id = req.params.id
+  const id = req.params.id;
 
   const data = await Blog.findById(id);
-  
+
   res.status(200).json({
     message: "Data Fetched Successfully",
-    data: data
-  })
-})
+    data: data,
+  });
+});
 
 //put method
-app.put('/about/:id',async(req,res)=>{
-  
-  const id = req.params.id
-  const {title,subTitle,description} = req.body;
+app.put("/about/:id", async (req, res) => {
+  const id = req.params.id;
+  const { title, subTitle, description } = req.body;
   //  res.send(req.body)
 
-  const data = await Blog.findByIdAndUpdate(id,{
+  const data = await Blog.findByIdAndUpdate(id, {
     title,
     subTitle,
-    description
-  })
+    description,
+  });
 
   res.status(200).json({
-    message:"updated successfuly",
-    data: data
-  })
-})
+    message: "updated successfuly",
+    data: data,
+  });
+});
 
 //delete method
-app.delete('/about/:id',async(req,res)=>{
-  const id = req.params.id
+app.delete("/about/:id", async (req, res) => {
+  const id = req.params.id;
 
-          await Blog.findByIdAndDelete(id)
+  await Blog.findByIdAndDelete(id);
 
   res.status(200).json({
-    message: "Deleted successfully"
-  })
-})
+    message: "Deleted successfully",
+  });
+});
 
 const port = 3000;
 app.listen(port, () => {
