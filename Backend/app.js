@@ -9,9 +9,11 @@ const app = express();
 //import database
 import connectDB from "./database/database.js";
 import Blog from "./models/Blog.js";
+import cors from "cors";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 connectDB();
 
 //get method
@@ -63,7 +65,7 @@ app.post("/blog", async (req, res) => {
 });
 
 //get method (all)
-app.get("/about", async (req, res) => {
+app.get("/blog", async (req, res) => {
   const data = await Blog.find();
 
   res.status(200).json({
