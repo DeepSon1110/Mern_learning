@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 
@@ -34,9 +35,9 @@ const Home = () => {
             <h1 className="font-bold text-2xl mb-2">{blog.title}</h1>
             <p className="my-3">{blog.subTitle}</p>
             <p className="my-3">{blog.description}</p>
-            <button className="text-white font-semibold bg-blue-600 hover:bg-blue-800 p-2 my-1 rounded">
+            <Link to = {`/blog/${blog._id}`}className="text-white font-semibold bg-blue-600 hover:bg-blue-800 p-2 my-1 rounded">
               Read More...
-            </button>
+            </Link>
           </div>
         ))
       }
