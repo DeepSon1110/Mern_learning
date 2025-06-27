@@ -75,7 +75,7 @@ app.get("/blog", async (req, res) => {
 });
 
 //get method (single)
-app.get("/about/:id", async (req, res) => {
+app.get("/blog/:id", async (req, res) => {
   //url ma pahako kura params ma aauxa ( so params lekhako, if not req.body lekhnu parthyoo)
 
   const id = req.params.id;
