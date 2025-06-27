@@ -1,10 +1,11 @@
-    import mongoose from "mongoose";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://sandip:sandip@cluster0.bjarhan.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    );
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log("Database connected successfully");
   } catch (error) {
     console.error("Database connection failed:", error);
