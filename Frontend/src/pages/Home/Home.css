@@ -1,0 +1,24 @@
+.home-container {
+  text-align: center;
+  margin-top: 60px;
+  background: #f0f4f8;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.home-btn {
+  margin-top: 20px;
+  padding: 10px 24px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.home-btn:hover {
+  background: #0056b3;
+}
